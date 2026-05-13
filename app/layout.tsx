@@ -3,7 +3,7 @@ import { Manrope, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-/** Canonical URL for metadata (Vercel sets VERCEL_URL at build & runtime). */
+/** Публичный URL для metadata (OG и т.д.): на Vercel бесплатно берётся https://$VERCEL_URL — свой домен не нужен. */
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.VERCEL_URL != null ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
