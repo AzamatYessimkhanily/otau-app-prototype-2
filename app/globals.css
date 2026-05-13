@@ -310,3 +310,25 @@
   font-family: var(--font-mono);
   letter-spacing: -0.02em;
 }
+
+/* Leaflet — каталог ЖК (Шымкент, реальные тайлы OSM/CARTO) */
+.otau-leaflet-pin {
+  background: transparent !important;
+  border: none !important;
+}
+
+.leaflet-container.catalog-map-leaflet {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  background: #e8eef5;
+}
+
+.leaflet-container.catalog-map-leaflet .leaflet-control-attribution {
+  font-size: 10px;
+  max-width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(6px);
+  border-radius: 8px 0 0 0;
+}

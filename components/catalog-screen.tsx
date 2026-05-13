@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import { List, Map, SlidersHorizontal, X, MapPin, ChevronDown } from 'lucide-react'
 import Image from 'next/image'
@@ -10,6 +11,18 @@ import {
   getStatusLabel,
   getStatusColor,
 } from '@/lib/mock-data'
+
+const CatalogMap = dynamic(
+  () => import('@/components/catalog-map').then((m) => m.CatalogMap),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center rounded-2xl border border-otau-neutral-200/80 bg-otau-neutral-100">
+        <div className="h-9 w-9 animate-spin rounded-full border-2 border-otau-primary-500 border-t-transparent" />
+      </div>
+    ),
+  },
+)
 
 interface CatalogScreenProps {
   onComplexClick: (complexId: string) => void
@@ -159,52 +172,20 @@ export function CatalogScreen({ onComplexClick }: CatalogScreenProps) {
         ) : (
           <motion.div
             key="map"
-            className="relative h-[calc(100vh-200px)]"
+            className="relative h-[calc(100vh-200px)] min-h-[420px]"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.2 }}
           >
-            {/* Map */}
-            <div 
-              className="absolute inset-0 bg-gradient-to-b from-otau-primary-50 to-otau-neutral-100"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231F4FA8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}
-            >
-              {/* Pins */}
-              {residentialComplexes.map((complex, i) => (
-                <button
-                  key={complex.id}
-                  type="button"
-                  className={`absolute transform -translate-x-1/2 -translate-y-full touch-manipulation ${
-                    selectedPin === complex.id ? 'z-20' : 'z-10'
-                  }`}
-                  style={{
-                    left: `${25 + i * 25}%`,
-                    top: `${30 + i * 15}%`,
-                  }}
-                  onClick={() => setSelectedPin(selectedPin === complex.id ? null : complex.id)}
-                >
-                  <motion.div 
-                    className="relative"
-                    animate={{ scale: selectedPin === complex.id ? 1.2 : 1 }}
-                  >
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg ${
-                      selectedPin === complex.id 
-                        ? 'bg-otau-primary-500' 
-                        : 'bg-white border-2 border-otau-primary-500'
-                    }`}>
-                      <span className={`text-xs font-bold ${selectedPin === complex.id ? 'text-white' : 'text-otau-primary-500'}`}>
-                        {formatPriceShort(complex.priceFrom).replace(' млн', '')}
-                      </span>
-                    </div>
-                    <div className={`absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-t-[10px] border-l-transparent border-r-transparent ${
-                      selectedPin === complex.id ? 'border-t-otau-primary-500' : 'border-t-white'
-                    }`} />
-                  </motion.div>
-                </button>
-              ))}
+            <div className="absolute inset-0 p-3">
+              <CatalogMap
+                complexes={residentialComplexes}
+                selectedId={selectedPin}
+                onMarkerClick={(id) =>
+                  setSelectedPin((prev) => (prev === id ? null : id))
+                }
+              />
             </div>
             
             {/* Selected card */}
