@@ -3,6 +3,11 @@ import { Manrope, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
+/** Canonical URL for metadata (Vercel sets VERCEL_URL at build & runtime). */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL != null ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
+
 const manrope = Manrope({ 
   subsets: ['latin', 'cyrillic'],
   variable: '--font-manrope',
@@ -18,6 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'OTAU App — Жилые комплексы Казахстана',
   description: 'Мобильное приложение для покупки квартир в жилых комплексах OTAU Group. Подбор, бронирование и оплата онлайн.',
   generator: 'OTAU Group',
