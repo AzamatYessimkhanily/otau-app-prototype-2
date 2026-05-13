@@ -1,0 +1,312 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ============================================
+     OTAU GROUP — БРЕНДОВЫЕ ЦВЕТА (из colorbook)
+     ============================================ */
+
+  /* ── PRIMARY / Brand Blue (главный цвет логотипа) ── */
+  --primary-50:  #EEF3FB;
+  --primary-100: #D6E2F4;
+  --primary-200: #ADC4E9;
+  --primary-300: #7FA0D8;
+  --primary-400: #4B78C2;
+  --primary-500: #1F4FA8;
+  --primary-600: #173E8C;
+  --primary-700: #122F6D;
+  --primary-800: #0D2350;
+  --primary-900: #081636;
+
+  /* ── ACCENT / Brand Red (как "GR" в логотипе) ── */
+  --accent-50:   #FDECEC;
+  --accent-100:  #FAD0D0;
+  --accent-200:  #F4A1A1;
+  --accent-300:  #EC6F6F;
+  --accent-400:  #DD3F3F;
+  --accent-500:  #C8261E;
+  --accent-600:  #A71D17;
+  --accent-700:  #821611;
+  --accent-800:  #5C0F0C;
+
+  /* ── NEUTRAL / Серая шкала (текст, фоны, бордеры) ── */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F7F8FA;
+  --neutral-100: #EFF1F5;
+  --neutral-200: #E2E5EC;
+  --neutral-300: #C9CED8;
+  --neutral-400: #9BA3B2;
+  --neutral-500: #6B7384;
+  --neutral-600: #4A5160;
+  --neutral-700: #2F3542;
+  --neutral-800: #1B1F2A;
+  --neutral-900: #0B0E16;
+
+  /* ── SEMANTIC / Состояния системы ── */
+  --success-bg:    #E6F4EC;
+  --success-500:   #1F8A52;
+  --success-700:   #156238;
+
+  --warning-bg:    #FFF4E0;
+  --warning-500:   #D98A0B;
+  --warning-700:   #9A6108;
+
+  --error-bg:      #FDECEC;
+  --error-500:     #C8261E;
+  --error-700:     #821611;
+
+  --info-bg:       #E6EEFB;
+  --info-500:      #1F4FA8;
+  --info-700:      #122F6D;
+
+  /* ── EFFECTS (из colorbook) ── */
+  --shadow-sm:  0 1px 2px rgba(11,14,22,0.04), 0 1px 1px rgba(11,14,22,0.03);
+  --shadow-md:  0 4px 12px rgba(11,14,22,0.06), 0 2px 4px rgba(11,14,22,0.04);
+  --shadow-lg:  0 12px 32px rgba(11,14,22,0.08), 0 4px 12px rgba(11,14,22,0.04);
+  --shadow-brand: 0 8px 24px rgba(31,79,168,0.18);
+
+  /* ── RADIUS (из colorbook) ── */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  
+  /* shadcn tokens mapped to OTAU */
+  --background: var(--neutral-50);
+  --foreground: var(--neutral-800);
+  --card: var(--neutral-0);
+  --card-foreground: var(--neutral-800);
+  --popover: var(--neutral-0);
+  --popover-foreground: var(--neutral-800);
+  --primary: var(--primary-500);
+  --primary-foreground: var(--neutral-0);
+  --secondary: var(--neutral-100);
+  --secondary-foreground: var(--neutral-700);
+  --muted: var(--neutral-100);
+  --muted-foreground: var(--neutral-500);
+  --accent: var(--accent-500);
+  --accent-foreground: var(--neutral-0);
+  --destructive: var(--error-500);
+  --destructive-foreground: var(--neutral-0);
+  --border: var(--neutral-200);
+  --input: var(--neutral-200);
+  --ring: var(--primary-500);
+  --radius: 12px;
+}
+
+@theme inline {
+  /* Шрифты из colorbook: Manrope + JetBrains Mono */
+  --font-sans: var(--font-manrope), 'Manrope', -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* Radius из colorbook */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  
+  /* OTAU custom colors for Tailwind */
+  --color-otau-primary-50: var(--primary-50);
+  --color-otau-primary-100: var(--primary-100);
+  --color-otau-primary-200: var(--primary-200);
+  --color-otau-primary-300: var(--primary-300);
+  --color-otau-primary-400: var(--primary-400);
+  --color-otau-primary-500: var(--primary-500);
+  --color-otau-primary-600: var(--primary-600);
+  --color-otau-primary-700: var(--primary-700);
+  --color-otau-primary-800: var(--primary-800);
+  --color-otau-primary-900: var(--primary-900);
+  
+  --color-otau-accent-50: var(--accent-50);
+  --color-otau-accent-100: var(--accent-100);
+  --color-otau-accent-200: var(--accent-200);
+  --color-otau-accent-300: var(--accent-300);
+  --color-otau-accent-400: var(--accent-400);
+  --color-otau-accent-500: var(--accent-500);
+  --color-otau-accent-600: var(--accent-600);
+  --color-otau-accent-700: var(--accent-700);
+  --color-otau-accent-800: var(--accent-800);
+  
+  --color-otau-neutral-0: var(--neutral-0);
+  --color-otau-neutral-50: var(--neutral-50);
+  --color-otau-neutral-100: var(--neutral-100);
+  --color-otau-neutral-200: var(--neutral-200);
+  --color-otau-neutral-300: var(--neutral-300);
+  --color-otau-neutral-400: var(--neutral-400);
+  --color-otau-neutral-500: var(--neutral-500);
+  --color-otau-neutral-600: var(--neutral-600);
+  --color-otau-neutral-700: var(--neutral-700);
+  --color-otau-neutral-800: var(--neutral-800);
+  --color-otau-neutral-900: var(--neutral-900);
+  
+  --color-otau-success-bg: var(--success-bg);
+  --color-otau-success-500: var(--success-500);
+  --color-otau-success-700: var(--success-700);
+  --color-otau-warning-bg: var(--warning-bg);
+  --color-otau-warning-500: var(--warning-500);
+  --color-otau-warning-700: var(--warning-700);
+  --color-otau-error-bg: var(--error-bg);
+  --color-otau-error-500: var(--error-500);
+  --color-otau-info-bg: var(--info-bg);
+  --color-otau-info-500: var(--info-500);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.55;
+  }
+  
+  /* Typography from colorbook */
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  
+  h1 { font-weight: 800; }
+}
+
+/* Safe area insets for iOS */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* OTAU Button Styles from colorbook */
+.btn-primary {
+  background: var(--primary-500);
+  color: var(--neutral-0);
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background: var(--primary-600);
+  box-shadow: var(--shadow-brand);
+}
+.btn-primary:active {
+  background: var(--primary-700);
+}
+
+.btn-secondary {
+  background: var(--neutral-0);
+  color: var(--primary-500);
+  border: 1.5px solid var(--primary-500);
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background: var(--primary-50);
+}
+
+.btn-accent {
+  background: var(--accent-500);
+  color: var(--neutral-0);
+  transition: all 0.2s ease;
+}
+.btn-accent:hover {
+  background: var(--accent-600);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--neutral-700);
+  transition: all 0.2s ease;
+}
+.btn-ghost:hover {
+  background: var(--neutral-100);
+}
+
+/* Badge styles from colorbook */
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+.badge-success { background: var(--success-bg); color: var(--success-700); }
+.badge-warning { background: var(--warning-bg); color: var(--warning-700); }
+.badge-error   { background: var(--error-bg);   color: var(--error-700); }
+.badge-info    { background: var(--info-bg);    color: var(--info-700); }
+.badge-primary { background: var(--primary-500); color: var(--neutral-0); }
+
+/* Card shadow from colorbook */
+.card-shadow {
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--neutral-200);
+}
+.card-shadow:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Hero gradient from colorbook */
+.hero-gradient {
+  background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-500) 60%, var(--primary-400) 100%);
+}
+
+/* Premium dark section from colorbook */
+.premium-dark {
+  background: var(--neutral-900);
+  color: var(--neutral-0);
+}
+
+/* Noise texture for premium effect */
+.noise-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Touch optimization */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Mono font for prices/numbers (JetBrains Mono from colorbook) */
+.font-price {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
