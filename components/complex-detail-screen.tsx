@@ -61,7 +61,7 @@ export function ComplexDetailScreen({
         className="h-full overflow-y-auto overscroll-contain"
       >
         {/* Hero */}
-        <div className="relative h-[52vh] overflow-hidden">
+        <div className="relative z-0 h-[52vh] overflow-hidden">
           {complex.images.map((image, index) => (
             <motion.div
               key={image}
@@ -83,11 +83,11 @@ export function ComplexDetailScreen({
             </motion.div>
           ))}
           
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
+          <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/70 via-transparent to-black/40 pointer-events-none" />
           
           {/* Nav */}
           <div 
-            className="absolute left-4 right-4 flex items-center justify-between z-10"
+            className="absolute left-4 right-4 flex items-center justify-between z-20"
             style={{ top: 'max(env(safe-area-inset-top), 12px)' }}
           >
             <motion.button
@@ -122,7 +122,7 @@ export function ComplexDetailScreen({
           
           {/* Status badge */}
           <motion.div 
-            className="absolute left-1/2 -translate-x-1/2 z-10"
+            className="absolute left-1/2 -translate-x-1/2 z-20"
             style={{ top: 'calc(env(safe-area-inset-top, 12px) + 8px)' }}
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -133,34 +133,43 @@ export function ComplexDetailScreen({
             </span>
           </motion.div>
           
-          {/* Image dots */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-            {complex.images.map((_, index) => (
-              <button
-                key={index}
-                type="button"
-                className={`h-2 rounded-full transition-all duration-300 touch-manipulation ${
-                  index === currentImage ? 'w-6 bg-white' : 'w-2 bg-white/50'
-                }`}
-                onClick={() => setCurrentImage(index)}
-              />
-            ))}
-          </div>
-          
-          {/* 3D Tour button */}
-          <motion.button
-            type="button"
-            className="absolute bottom-6 right-4 px-4 py-2.5 bg-white/20 backdrop-blur-xl rounded-full flex items-center gap-2 border border-white/30 active:bg-white/30 touch-manipulation"
-            whileTap={{ scale: 0.95 }}
+          {/* Карусель + 3D: выше зоны перекрытия белой карточкой (-mt-10), иначе точки «пропадают» под ней */}
+          <div
+            className="absolute inset-x-0 z-20 flex items-center justify-between gap-2 px-3 sm:px-4 pointer-events-none bottom-24 pb-[env(safe-area-inset-bottom)]"
           >
-            <Play className="w-4 h-4 text-white fill-white" />
-            <span className="text-sm font-semibold text-white">3D тур</span>
-          </motion.button>
+            <div className="w-24 flex-shrink-0" aria-hidden />
+            <div className="flex flex-1 justify-center gap-2 pointer-events-auto min-w-0">
+              {complex.images.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  className={`h-2.5 rounded-full transition-all duration-300 touch-manipulation shadow-sm ring-1 ring-black/20 ${
+                    index === currentImage ? 'w-7 bg-white' : 'w-2 bg-white/70'
+                  }`}
+                  onClick={() => setCurrentImage(index)}
+                />
+              ))}
+            </div>
+            {complex.virtualTourUrl ? (
+              <motion.a
+                href={complex.virtualTourUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pointer-events-auto flex-shrink-0 px-4 py-2.5 bg-white/25 backdrop-blur-xl rounded-full flex items-center gap-2 border border-white/40 shadow-md active:bg-white/35 touch-manipulation"
+                whileTap={{ scale: 0.95 }}
+              >
+                <Play className="w-4 h-4 text-white fill-white" />
+                <span className="text-sm font-semibold text-white whitespace-nowrap">3D тур</span>
+              </motion.a>
+            ) : (
+              <div className="w-24 flex-shrink-0" aria-hidden />
+            )}
+          </div>
         </div>
         
         {/* Content */}
         <motion.div 
-          className="relative -mt-10 bg-white rounded-t-[32px] min-h-[60vh] pb-36"
+          className="relative z-10 -mt-10 bg-white rounded-t-[32px] min-h-[60vh] pb-36"
           style={{ boxShadow: '0 -12px 40px rgba(0,0,0,0.1)' }}
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

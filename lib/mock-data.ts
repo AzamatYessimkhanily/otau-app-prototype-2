@@ -19,6 +19,8 @@ export interface ResidentialComplex {
   images: string[]
   coordinates: { lat: number; lng: number }
   discount?: number
+  /** Обзор 360° на сайте застройщика (если есть) */
+  virtualTourUrl?: string
 }
 
 export interface Apartment {
@@ -95,6 +97,7 @@ export const residentialComplexes: ResidentialComplex[] = [
     images: MUQAGALI_IMAGES,
     coordinates: { lat: 42.297, lng: 69.612 },
     discount: 8,
+    virtualTourUrl: 'https://muqagali.otaugroup.kz/obzor360',
   },
   {
     id: 'otau-city',

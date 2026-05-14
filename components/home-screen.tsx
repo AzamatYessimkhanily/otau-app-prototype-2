@@ -426,7 +426,10 @@ export function HomeScreen({ onComplexClick, onCatalogClick }: HomeScreenProps) 
             type="button"
             className="relative w-full h-[170px] rounded-3xl overflow-hidden text-left touch-manipulation"
             style={{ boxShadow: '0 1px 2px rgba(11,14,22,0.04), 0 16px 40px rgba(11,14,22,0.10)' }}
-            onClick={() => onComplexClick(residentialComplexes[0].id)}
+            onClick={() => {
+              const tour = residentialComplexes.find((c) => c.id === 'muqagali')?.virtualTourUrl
+              if (tour) window.open(tour, '_blank', 'noopener,noreferrer')
+            }}
           >
             <Image
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
