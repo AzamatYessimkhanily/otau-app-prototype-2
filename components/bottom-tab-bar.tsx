@@ -20,12 +20,7 @@ const tabs: { id: TabId; label: string; icon: typeof Home }[] = [
 
 export function BottomTabBar({ activeTab, onTabChange, unreadMessages = 0 }: BottomTabBarProps) {
   return (
-    <div 
-      className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-t border-otau-neutral-100/50 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]"
-      style={{
-        paddingBottom: 'env(safe-area-inset-bottom, 8px)',
-      }}
-    >
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-t border-otau-neutral-100/50 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
       <nav className="flex items-center justify-around h-[68px] px-2">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id
@@ -69,6 +64,12 @@ export function BottomTabBar({ activeTab, onTabChange, unreadMessages = 0 }: Bot
           )
         })}
       </nav>
+      {/* Заполняем safe-area снизу тем же фоном, чтобы в PWA не было «полоски» под панелью */}
+      <div
+        className="w-full shrink-0"
+        style={{ height: 'max(env(safe-area-inset-bottom, 0px), 0px)' }}
+        aria-hidden
+      />
     </div>
   )
 }

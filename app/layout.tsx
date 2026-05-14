@@ -51,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${manrope.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-sans antialiased bg-otau-neutral-50 text-otau-neutral-800 overscroll-none">
+      <body className="font-sans antialiased min-h-[100dvh] bg-otau-neutral-50 text-otau-neutral-800 overscroll-none">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

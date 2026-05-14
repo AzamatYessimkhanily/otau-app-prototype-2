@@ -177,13 +177,22 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  /* PWA / «Добавить на экран Домой» (iOS): убираем «лишнюю» полосу снизу под таббаром */
+  html {
+    height: 100%;
+    height: -webkit-fill-available;
+  }
   body {
     @apply bg-background text-foreground;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.55;
+    min-height: 100%;
+    min-height: -webkit-fill-available;
+    min-height: 100dvh;
   }
-  
+
   /* Typography from colorbook */
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;

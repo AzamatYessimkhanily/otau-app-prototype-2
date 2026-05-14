@@ -92,7 +92,7 @@ export default function OtauApp() {
     : null
 
   return (
-    <div className="fixed inset-0 w-full h-full overflow-hidden bg-otau-neutral-50">
+    <div className="fixed inset-0 h-[100dvh] max-h-[100dvh] w-full overflow-hidden bg-otau-neutral-50">
       <AnimatePresence mode="wait">
         {currentScreen === 'splash' && (
           <motion.div
