@@ -169,7 +169,7 @@ export function ComplexDetailScreen({
         
         {/* Content */}
         <motion.div 
-          className="relative z-10 -mt-10 bg-white rounded-t-[32px] min-h-[60vh] pb-36"
+          className="relative z-10 -mt-10 bg-white rounded-t-[32px] min-h-[60vh] pb-28"
           style={{ boxShadow: '0 -12px 40px rgba(0,0,0,0.1)' }}
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

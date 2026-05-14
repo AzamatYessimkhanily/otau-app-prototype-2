@@ -35,7 +35,7 @@ export function CatalogScreen({ onComplexClick }: CatalogScreenProps) {
   const [selectedPin, setSelectedPin] = useState<string | null>(null)
   
   return (
-    <div className="min-h-full bg-otau-neutral-50 pb-24">
+    <div className="min-h-full bg-otau-neutral-50 pb-6">
       {/* Header */}
       <header 
         className="sticky top-0 z-30 bg-white/95 backdrop-blur-xl border-b border-otau-neutral-100 px-4"
@@ -172,7 +172,7 @@ export function CatalogScreen({ onComplexClick }: CatalogScreenProps) {
         ) : (
           <motion.div
             key="map"
-            className="relative h-[calc(100vh-200px)] min-h-[420px]"
+            className="relative min-h-[300px] h-[min(520px,calc(100dvh-12rem))]"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
@@ -188,16 +188,10 @@ export function CatalogScreen({ onComplexClick }: CatalogScreenProps) {
               />
             </div>
             
-            {/* Selected card */}
-            {/* Карточка маркера: выше фиксированного таббара (~68px) + safe-area */}
             <AnimatePresence>
               {selectedPin && (
                 <motion.div
-                  className="absolute left-4 right-4 z-20"
-                  style={{
-                    bottom:
-                      'calc(1rem + 4.25rem + env(safe-area-inset-bottom, 0px))',
-                  }}
+                  className="absolute bottom-4 left-4 right-4 z-[500]"
                   initial={{ y: 100, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 100, opacity: 0 }}

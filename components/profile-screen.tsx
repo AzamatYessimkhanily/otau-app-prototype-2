@@ -32,7 +32,7 @@ export function ProfileScreen({ onServiceClick, onClubClick }: ProfileScreenProp
   const paidPercentage = Math.round((myApartment.paidAmount / myApartment.price) * 100)
 
   return (
-    <div className="min-h-full bg-gradient-to-b from-otau-neutral-50 to-white pb-28">
+    <div className="min-h-full bg-gradient-to-b from-otau-neutral-50 to-white pb-8">
       {/* Header */}
       <header 
         className="relative bg-gradient-to-br from-otau-primary-600 via-otau-primary-500 to-otau-primary-700 px-5 pb-10 rounded-b-[36px] overflow-hidden"

@@ -92,8 +92,9 @@ export default function OtauApp() {
     : null
 
   return (
-    <div className="fixed inset-0 h-[100dvh] max-h-[100dvh] w-full overflow-hidden bg-otau-neutral-50">
-      <AnimatePresence mode="wait">
+    <div className="fixed inset-0 flex h-full max-h-[100dvh] w-full flex-col overflow-hidden bg-otau-neutral-50">
+      <div className="relative min-h-0 flex-1 overflow-hidden">
+        <AnimatePresence mode="wait">
         {currentScreen === 'splash' && (
           <motion.div
             key="splash"
@@ -256,10 +257,11 @@ export default function OtauApp() {
             <ChatScreen />
           </motion.div>
         )}
-      </AnimatePresence>
-      
+        </AnimatePresence>
+      </div>
+
       {showBottomBar && (
-        <BottomTabBar 
+        <BottomTabBar
           activeTab={activeTab}
           onTabChange={handleTabChange}
           unreadMessages={2}

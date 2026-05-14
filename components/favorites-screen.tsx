@@ -12,7 +12,7 @@ export function FavoritesScreen({ onComplexClick }: FavoritesScreenProps) {
   const favorites = residentialComplexes.slice(0, 2)
 
   return (
-    <div className="min-h-full bg-otau-neutral-50 pb-28">
+    <div className="min-h-full bg-otau-neutral-50 pb-8">
       {/* Header */}
       <header 
         className="sticky top-0 z-30 bg-white/95 backdrop-blur-xl border-b border-otau-neutral-100 px-4"

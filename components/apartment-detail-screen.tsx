@@ -33,7 +33,7 @@ export function ApartmentDetailScreen({ apartment, complexName, onBack }: Apartm
   const monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1)
   
   return (
-    <div className="min-h-full bg-white pb-36">
+    <div className="min-h-full bg-white pb-28">
       {/* Fullscreen Floor Plan Modal */}
       <AnimatePresence>
         {showFullPlan && (

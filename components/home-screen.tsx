@@ -42,7 +42,7 @@ export function HomeScreen({ onComplexClick, onCatalogClick }: HomeScreenProps) 
   }
 
   return (
-    <div className="min-h-full bg-gradient-to-b from-white via-otau-neutral-50 to-otau-neutral-50 pb-28">
+    <div className="min-h-full bg-gradient-to-b from-white via-otau-neutral-50 to-otau-neutral-50 pb-8">
       {/* Header */}
       <header 
         className="sticky top-0 z-30 bg-white/90 backdrop-blur-2xl border-b border-otau-neutral-100/50"
