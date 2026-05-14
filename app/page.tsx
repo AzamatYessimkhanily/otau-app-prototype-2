@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback } from 'react'
+import { useAppViewportHeight } from '@/hooks/use-app-viewport-height'
 import { AnimatePresence, motion } from 'framer-motion'
 import { SplashScreen } from '@/components/splash-screen'
 import { Onboarding } from '@/components/onboarding'
@@ -32,6 +33,7 @@ type Screen =
 type TabId = 'home' | 'catalog' | 'favorites' | 'profile' | 'chat'
 
 export default function OtauApp() {
+  const appHeight = useAppViewportHeight()
   const [currentScreen, setCurrentScreen] = useState<Screen>('splash')
   const [activeTab, setActiveTab] = useState<TabId>('home')
   const [selectedComplexId, setSelectedComplexId] = useState<string | null>(null)
@@ -92,7 +94,10 @@ export default function OtauApp() {
     : null
 
   return (
-    <div className="fixed inset-0 flex h-full max-h-[100dvh] w-full flex-col overflow-hidden bg-otau-neutral-50">
+    <div
+      className="fixed left-0 right-0 top-0 z-0 flex w-full flex-col overflow-hidden bg-otau-neutral-50"
+      style={{ height: appHeight }}
+    >
       <div className="relative min-h-0 flex-1 overflow-hidden">
         <AnimatePresence mode="wait">
         {currentScreen === 'splash' && (

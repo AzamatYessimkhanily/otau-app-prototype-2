@@ -172,13 +172,13 @@ export function CatalogScreen({ onComplexClick }: CatalogScreenProps) {
         ) : (
           <motion.div
             key="map"
-            className="relative min-h-[300px] h-[min(520px,calc(100dvh-12rem))]"
+            className="relative min-h-[260px] h-[min(420px,42svh)] max-h-[min(480px,50svh)]"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="absolute inset-0 p-3">
+            <div className="absolute inset-0 px-3 pt-3 pb-2">
               <CatalogMap
                 complexes={residentialComplexes}
                 selectedId={selectedPin}
@@ -191,7 +191,7 @@ export function CatalogScreen({ onComplexClick }: CatalogScreenProps) {
             <AnimatePresence>
               {selectedPin && (
                 <motion.div
-                  className="absolute bottom-4 left-4 right-4 z-[500]"
+                  className="absolute bottom-2 left-3 right-3 z-[500]"
                   initial={{ y: 100, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 100, opacity: 0 }}
