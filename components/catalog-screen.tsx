@@ -189,14 +189,19 @@ export function CatalogScreen({ onComplexClick }: CatalogScreenProps) {
             </div>
             
             {/* Selected card */}
+            {/* Карточка маркера: выше фиксированного таббара (~68px) + safe-area */}
             <AnimatePresence>
               {selectedPin && (
                 <motion.div
-                  className="absolute bottom-4 left-4 right-4"
+                  className="absolute left-4 right-4 z-20"
+                  style={{
+                    bottom:
+                      'calc(1rem + 4.25rem + env(safe-area-inset-bottom, 0px))',
+                  }}
                   initial={{ y: 100, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 100, opacity: 0 }}
-                  transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                  transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                 >
                   {residentialComplexes.filter(c => c.id === selectedPin).map(complex => (
                     <button
