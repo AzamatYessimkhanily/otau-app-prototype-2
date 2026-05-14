@@ -35,10 +35,16 @@ export function CatalogScreen({ onComplexClick }: CatalogScreenProps) {
   const [selectedPin, setSelectedPin] = useState<string | null>(null)
   
   return (
-    <div className="min-h-full bg-otau-neutral-50 pb-6">
+    <div
+      className={
+        viewMode === 'map'
+          ? 'flex h-full min-h-0 flex-col overflow-hidden bg-otau-neutral-50'
+          : 'min-h-full bg-otau-neutral-50 pb-6'
+      }
+    >
       {/* Header */}
       <header 
-        className="sticky top-0 z-30 bg-white/95 backdrop-blur-xl border-b border-otau-neutral-100 px-4"
+        className="sticky top-0 z-30 shrink-0 bg-white/95 backdrop-blur-xl border-b border-otau-neutral-100 px-4"
         style={{ paddingTop: 'env(safe-area-inset-top, 12px)' }}
       >
         <div className="flex items-center justify-between py-3 mb-3">
@@ -172,13 +178,13 @@ export function CatalogScreen({ onComplexClick }: CatalogScreenProps) {
         ) : (
           <motion.div
             key="map"
-            className="relative min-h-[260px] h-[min(420px,42svh)] max-h-[min(480px,50svh)]"
+            className="relative flex min-h-0 flex-1 flex-col"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="absolute inset-0 px-3 pt-3 pb-2">
+            <div className="relative min-h-0 flex-1 px-3 pb-2 pt-1">
               <CatalogMap
                 complexes={residentialComplexes}
                 selectedId={selectedPin}

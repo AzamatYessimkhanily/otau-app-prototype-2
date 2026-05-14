@@ -42,7 +42,7 @@ export function HomeScreen({ onComplexClick, onCatalogClick }: HomeScreenProps) 
   }
 
   return (
-    <div className="min-h-full bg-gradient-to-b from-white via-otau-neutral-50 to-otau-neutral-50 pb-8">
+    <div className="min-h-full bg-gradient-to-b from-white via-otau-neutral-50 to-otau-neutral-50 pb-6">
       {/* Header */}
       <header 
         className="sticky top-0 z-30 bg-white/90 backdrop-blur-2xl border-b border-otau-neutral-100/50"
@@ -89,7 +89,7 @@ export function HomeScreen({ onComplexClick, onCatalogClick }: HomeScreenProps) 
       
       <div className="px-4 pt-4">
         {/* Stories row — short editorial highlights */}
-        <section className="-mx-4 mb-6">
+        <section className="-mx-4 mb-4">
           <div className="flex gap-3 overflow-x-auto scrollbar-hide px-4">
             {stories.map((story) => (
               <button
@@ -119,7 +119,7 @@ export function HomeScreen({ onComplexClick, onCatalogClick }: HomeScreenProps) 
         
         {/* Hero Banner — calm crossfade, clean overlay */}
         <div 
-          className="relative h-[220px] rounded-3xl overflow-hidden mb-6"
+          className="relative h-[220px] rounded-3xl overflow-hidden mb-4"
           style={{ boxShadow: '0 1px 2px rgba(11,14,22,0.04), 0 16px 40px rgba(11,14,22,0.10)' }}
         >
           {residentialComplexes.map((complex, index) => (
@@ -176,23 +176,23 @@ export function HomeScreen({ onComplexClick, onCatalogClick }: HomeScreenProps) 
         </div>
         
         {/* Brand stats strip — quiet trust signal */}
-        <div className="grid grid-cols-3 bg-white border border-otau-neutral-100 rounded-2xl mb-7 overflow-hidden">
-          <div className="px-3 py-4 text-center">
+        <div className="grid grid-cols-3 bg-white border border-otau-neutral-100 rounded-2xl mb-4 overflow-hidden">
+          <div className="px-3 py-3 text-center">
             <p className="text-[20px] font-bold text-otau-neutral-900 tracking-tight">12+</p>
             <p className="text-[11px] text-otau-neutral-500 mt-0.5">лет на рынке</p>
           </div>
-          <div className="px-3 py-4 text-center border-x border-otau-neutral-100">
+          <div className="px-3 py-3 text-center border-x border-otau-neutral-100">
             <p className="text-[20px] font-bold text-otau-neutral-900 tracking-tight">8</p>
             <p className="text-[11px] text-otau-neutral-500 mt-0.5">сданных ЖК</p>
           </div>
-          <div className="px-3 py-4 text-center">
+          <div className="px-3 py-3 text-center">
             <p className="text-[20px] font-bold text-otau-neutral-900 tracking-tight">8 400+</p>
             <p className="text-[11px] text-otau-neutral-500 mt-0.5">семей у нас</p>
           </div>
         </div>
         
         {/* Quick Filters */}
-        <div className="flex gap-2 overflow-x-auto scrollbar-hide -mx-4 px-4 mb-7 pb-1">
+        <div className="flex gap-2 overflow-x-auto scrollbar-hide -mx-4 px-4 mb-4 pb-0.5">
           {quickFilters.map((filter) => (
             <button
               key={filter.id}
@@ -210,8 +210,8 @@ export function HomeScreen({ onComplexClick, onCatalogClick }: HomeScreenProps) 
         </div>
         
         {/* Recommended */}
-        <section className="mb-8">
-          <div className="flex items-center justify-between mb-4">
+        <section className="mb-6">
+          <div className="flex items-center justify-between mb-3">
             <h2 className="text-xl font-bold text-otau-neutral-900">Рекомендуем</h2>
             <motion.button 
               type="button"
@@ -224,7 +224,7 @@ export function HomeScreen({ onComplexClick, onCatalogClick }: HomeScreenProps) 
           </div>
           
           {/* Cards */}
-          <div className="flex gap-4 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-2">
+          <div className="flex gap-3 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-2">
             {residentialComplexes.map((complex) => (
               <button
                 key={complex.id}

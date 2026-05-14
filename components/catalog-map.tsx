@@ -87,7 +87,7 @@ export function CatalogMap({ complexes, selectedId, onMarkerClick }: CatalogMapP
     const bounds = L.latLngBounds(
       complexes.map((c) => [c.coordinates.lat, c.coordinates.lng] as L.LatLngTuple),
     )
-    map.fitBounds(bounds, { padding: [56, 56], maxZoom: 12, animate: false })
+    map.fitBounds(bounds, { padding: [88, 88], maxZoom: 11, animate: false })
 
     complexes.forEach((complex) => {
       const marker = L.marker([complex.coordinates.lat, complex.coordinates.lng], {
@@ -119,8 +119,21 @@ export function CatalogMap({ complexes, selectedId, onMarkerClick }: CatalogMapP
     syncMarkers()
   }, [syncMarkers])
 
+  useEffect(() => {
+    const map = mapRef.current
+    const el = containerRef.current
+    if (!map || !el) return
+    const root = el.parentElement
+    if (!root) return
+    const ro = new ResizeObserver(() => {
+      map.invalidateSize({ animate: false })
+    })
+    ro.observe(root)
+    return () => ro.disconnect()
+  }, [])
+
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-otau-neutral-200/80 bg-otau-neutral-100 shadow-inner">
+    <div className="relative h-full min-h-[200px] w-full overflow-hidden rounded-2xl border border-otau-neutral-200/80 bg-otau-neutral-100 shadow-inner">
       <div ref={containerRef} className="catalog-map-leaflet absolute inset-0 z-0" />
 
       {/* Region label — Shymkent focus, includes nearby region for all pins */}
