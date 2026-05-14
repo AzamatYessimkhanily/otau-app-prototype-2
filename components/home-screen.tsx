@@ -388,7 +388,7 @@ export function HomeScreen({ onComplexClick, onCatalogClick }: HomeScreenProps) 
                   <span className="text-[11px] text-white/60 font-medium">До 15%</span>
                 </div>
                 <h3 className="text-[22px] font-bold text-white mb-1 tracking-tight">Чёрная пятница</h3>
-                <p className="text-white/70 text-[13px] mb-3 leading-relaxed">Особые условия на квартиры в ЖК Орда</p>
+                <p className="text-white/70 text-[13px] mb-3 leading-relaxed">Особые условия на квартиры в Otau City</p>
                 <div className="flex items-center gap-2">
                   <Clock className="w-3.5 h-3.5 text-white/50" />
                   <span className="text-white/60 text-[12px] font-medium">Осталось 3 дня</span>
@@ -441,7 +441,7 @@ export function HomeScreen({ onComplexClick, onCatalogClick }: HomeScreenProps) 
                   <Eye className="w-3 h-3 text-white" />
                   <span className="text-[10px] font-semibold text-white tracking-wider">3D-ТУР · 4K</span>
                 </span>
-                <h3 className="text-white text-[20px] font-bold leading-tight mb-1 tracking-tight">Виртуальный тур по ЖК Айя</h3>
+                <h3 className="text-white text-[20px] font-bold leading-tight mb-1 tracking-tight">Виртуальный тур по MUQAGALI</h3>
                 <p className="text-white/75 text-[12px]">Посмотрите квартиру до визита в офис</p>
               </div>
               <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-xl">
